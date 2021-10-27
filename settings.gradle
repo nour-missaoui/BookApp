@@ -1,0 +1,3 @@
+rootProject.name = "TestApplication"
+include ':app'
+include ':coreData'
