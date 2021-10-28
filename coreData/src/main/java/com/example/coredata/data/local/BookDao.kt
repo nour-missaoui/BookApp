@@ -9,7 +9,7 @@ import com.example.core.domain.entity.localentity.BookEntity
 @Dao
 interface BookDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertBook(bookEntity: List<BookEntity>?)
+    suspend fun insertBook(bookEntity: List<BookEntity>?)
 
     @Query("select * from BOOK_TABLE")
     fun getBooks(): List<BookEntity>?
