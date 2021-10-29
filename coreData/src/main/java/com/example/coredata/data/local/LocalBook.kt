@@ -1,18 +1,19 @@
 package com.example.coredata.data.local
 
-import android.content.Context
-import com.example.core.data.local.DataBase
+import com.example.core.data.local.BookDao
 import com.example.core.domain.entity.localentity.BookEntity
+import javax.inject.Inject
 
-class LocalBook(context: Context) {
+class LocalBook @Inject constructor(private val bookDao: BookDao) {
 
-    val db = DataBase.getInstance(context)
+
     fun getLocalBooks(): List<BookEntity>? {
-        return db.bookDao().getBooks()
+        return bookDao.getBooks()
     }
 
     suspend fun insertBooks(bookEntity: List<BookEntity>) {
-        db.bookDao().insertBook(bookEntity = bookEntity)
+        bookDao.insertBook(bookEntity = bookEntity)
     }
+
 
 }

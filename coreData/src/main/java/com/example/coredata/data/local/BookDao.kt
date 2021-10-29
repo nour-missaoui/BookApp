@@ -14,4 +14,5 @@ interface BookDao {
     @Query("select * from BOOK_TABLE")
     fun getBooks(): List<BookEntity>?
 
+
 }

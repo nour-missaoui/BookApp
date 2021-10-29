@@ -1,21 +1,24 @@
-package com.example.testapplication
+package com.example.testapplication.ui.home
 
-import com.example.coredata.domain.entity.Items
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.core.domain.entity.localentity.BookEntity
+import com.example.testapplication.R
 
-class BookRVAdapter(val context : Context) :
+class BookRVAdapter(private val listener: ItemListener) :
 
     RecyclerView.Adapter<BookRVAdapter.ViewHolder>() {
+    interface ItemListener {
+        fun onLikedPublication(title: String)
+    }
 
- var bookList: List<BookEntity> = listOf()
+    var bookList: List<BookEntity> = listOf()
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, private val listener: ItemListener) :
+        RecyclerView.ViewHolder(view) {
 
         val textView: TextView
 
@@ -29,13 +32,14 @@ class BookRVAdapter(val context : Context) :
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.itembooklayout, viewGroup, false)
 
-        return ViewHolder(view)
+        return ViewHolder(view, listener)
     }
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
         viewHolder.textView.text = bookList[position].title
+        viewHolder.textView.setOnClickListener { listener.onLikedPublication(bookList[position].title) }
     }
 
     // Return the size of your dataset (invoked by the layout manager)

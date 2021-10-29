@@ -1,9 +1,6 @@
-package com.example.testapplication
+package com.example.testapplication.ui.home
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import com.example.coredata.data.repository.IBookRepository
-
+/*
 class MainViewModelFactory constructor(bookReposirtory: IBookRepository) :
     ViewModelProvider.Factory {
     val bookReposirtory = bookReposirtory
@@ -14,4 +11,4 @@ class MainViewModelFactory constructor(bookReposirtory: IBookRepository) :
             throw IllegalArgumentException("ViewModel Not Found")
         }
     }
-}
+}*/
