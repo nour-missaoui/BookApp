@@ -1,10 +1,10 @@
 package com.example.coredata.di
 
 import android.content.Context
-import com.example.core.data.local.BookDao
-import com.example.core.data.local.DataBase
-import com.example.core.data.remote.api.ApiService
+import com.example.coredata.data.local.BookDao
+import com.example.coredata.data.local.DataBase
 import com.example.coredata.data.local.LocalBook
+import com.example.coredata.data.remote.api.ApiService
 import com.example.coredata.data.remote.api.Datasource
 import com.example.coredata.data.repository.BookReposirtory
 import com.example.coredata.data.repository.IBookRepository
@@ -61,8 +61,8 @@ object NetworkCall {
     }
 
     //local
-    @Provides
     @Singleton
+    @Provides
     fun provideAppDatabase(@ApplicationContext appContext: Context): DataBase {
 
         return DataBase.getInstance(context = appContext)

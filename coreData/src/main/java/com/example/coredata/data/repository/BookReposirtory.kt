@@ -1,11 +1,11 @@
 package com.example.coredata.data.repository
 
-//import com.example.core.data.local.BookDao
-//import com.example.core.data.local.DataBase
-import com.example.core.domain.entity.localentity.BookEntity
+//import com.example.coredata.data.local.BookDao
+//import com.example.coredata.data.local.DataBase
 import com.example.coredata.data.local.LocalBook
 import com.example.coredata.data.remote.api.Datasource
 import com.example.coredata.domain.entity.Books
+import com.example.coredata.domain.entity.localentity.BookEntity
 import com.example.coredata.domain.utils.DataState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-//import com.example.core.domain.entity.localentity.BookEntity
+//import com.example.coredata.domain.entity.localentity.BookEntity
 
 
 //we need interface to ensure the communication from repo to view

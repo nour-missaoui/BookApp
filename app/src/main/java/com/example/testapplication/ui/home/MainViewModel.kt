@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.core.domain.entity.localentity.BookEntity
 import com.example.coredata.data.repository.IBookRepository
+import com.example.coredata.domain.entity.localentity.BookEntity
 import com.example.coredata.domain.utils.DataState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.InternalCoroutinesApi

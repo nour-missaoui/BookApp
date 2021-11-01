@@ -1,4 +1,4 @@
-package com.example.core.domain.entity.localentity
+package com.example.coredata.domain.entity.localentity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

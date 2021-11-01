@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.core.domain.entity.localentity.BookEntity
+import com.example.coredata.domain.entity.localentity.BookEntity
 import com.example.testapplication.R
 
 class BookRVAdapter(private val listener: ItemListener) :

@@ -1,11 +1,10 @@
-package com.example.core.data.local
+package com.example.coredata.data.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import com.example.core.domain.entity.localentity.BookEntity
+import com.example.coredata.domain.entity.localentity.BookEntity
 
 @Database(
     entities = [BookEntity::class],

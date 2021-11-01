@@ -1,8 +1,7 @@
 package com.example.coredata.data.remote.api
 
-import com.example.core.data.remote.api.ApiService
-import com.example.core.domain.entity.localentity.BookEntity
 import com.example.coredata.domain.entity.Books
+import com.example.coredata.domain.entity.localentity.BookEntity
 import com.example.coredata.domain.utils.DataState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

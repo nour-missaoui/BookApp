@@ -1,10 +1,10 @@
-package com.example.core.data.local
+package com.example.coredata.data.local
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.core.domain.entity.localentity.BookEntity
+import com.example.coredata.domain.entity.localentity.BookEntity
 
 @Dao
 interface BookDao {

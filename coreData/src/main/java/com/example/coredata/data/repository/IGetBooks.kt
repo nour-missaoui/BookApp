@@ -1,6 +1,6 @@
 package com.example.coredata.data.repository
 
-import com.example.core.domain.entity.localentity.BookEntity
+import com.example.coredata.domain.entity.localentity.BookEntity
 
 
 // interface to communicate from repo to view

@@ -1,4 +1,4 @@
-package com.example.core.data.remote.api
+package com.example.coredata.data.remote.api
 
 
 import com.example.coredata.domain.entity.Books
