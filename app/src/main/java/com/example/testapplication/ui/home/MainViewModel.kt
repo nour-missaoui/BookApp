@@ -21,7 +21,6 @@ class MainViewModel @Inject constructor(private val bookReposirtory: IBookReposi
     //used to send intent from views to modelviews
     val intentChannel = Channel<HomeIntent>(Channel.UNLIMITED)
 
-    val intentAuthorNameChannel = Channel<String>(Channel.UNLIMITED)
 
     //used to send data from  modelviews  to     views
     private val _viewState = MutableStateFlow<HomeViewState>(HomeViewState.Idle)
@@ -32,9 +31,7 @@ class MainViewModel @Inject constructor(private val bookReposirtory: IBookReposi
         viewModelScope.launch {
             intentChannel.consumeAsFlow().collect {
                 when (it) {
-                    is HomeIntent.SearchBooksAction -> getAuthorBooks(
-                        intentAuthorNameChannel.consumeAsFlow().first()
-                    )
+                    is HomeIntent.SearchBooksAction -> getAuthorBooks(it.authorName)
                 }
 
             }
@@ -50,7 +47,7 @@ class MainViewModel @Inject constructor(private val bookReposirtory: IBookReposi
             val dataState = bookReposirtory.getAll(viewModelScope, author).first()
             when (dataState) {
                 is DataState.Success -> _viewState.value = HomeViewState.SearchBooks(
-                    dataState.data
+                    dataState.data, dataState.isFromRemote
                 )
                 is DataState.Error -> _viewState.value = HomeViewState.Error(dataState.exception)
             }

@@ -45,55 +45,16 @@ class MainFragment : Fragment(), BookRVAdapter.ItemListener {
             author = view.findViewById<TextView>(R.id.authorname).text.toString()
             render()
             //send
-            lifecycleScope.launchWhenCreated {
-                viewModel.intentAuthorNameChannel.send(author)
-            }
+
 
             lifecycleScope.launchWhenCreated {
-                viewModel.intentChannel.send(HomeIntent.SearchBooksAction)
+                viewModel.intentChannel.send(HomeIntent.SearchBooksAction(author))
             }
 
 
             author = view.findViewById<TextView>(R.id.authorname).text.toString()
             Log.v("aaaaaaaa", author)
             adapter = BookRVAdapter(this)
-            /*
-              viewModel.getBooksAction(author)
-              viewModel.bookList.observe(viewLifecycleOwner) {
-                  it?.let {
-                      when (it) {
-                          is DataState.Success -> {
-                              adapter.bookList = it.data!!
-                              recyclerView.adapter = adapter
-                              recyclerView.layoutManager = LinearLayoutManager(requireContext())
-                              if (!it.isFromRemote) {
-                                  Toast.makeText(
-                                      requireContext(),
-                                      "data frm local",
-                                      Toast.LENGTH_LONG
-                                  ).show()
-                              } else {
-                                  if (!it.isFromRemote) {
-                                      Toast.makeText(
-                                          requireContext(),
-                                          "data frm remote",
-                                          Toast.LENGTH_LONG
-                                      ).show()
-                                  }
-                              }
-                          }
-                          is DataState.Error -> Toast.makeText(
-                              requireContext(),
-                              it.exception,
-                              Toast.LENGTH_LONG
-                          )
-                              .show()
-                      }
-
-                  } ?: kotlin.run { Log.v("nnnnBOokssss", "null") }
-
-              }*/
-
         }
 
 
@@ -110,7 +71,7 @@ class MainFragment : Fragment(), BookRVAdapter.ItemListener {
                         Toast.LENGTH_LONG
                     ).show()
 
-                    is HomeViewState.SearchBooks<*> -> displayBooks(it.books as List<BookEntity>)
+                    is HomeViewState.SearchBooks -> displayBooks(it.books!!, it.isFromRemote)
 
                     is HomeViewState.Error -> Toast.makeText(
                         requireContext(),
@@ -123,10 +84,25 @@ class MainFragment : Fragment(), BookRVAdapter.ItemListener {
 
     }
 
-    private fun displayBooks(books: List<BookEntity>) {
+    private fun displayBooks(books: List<BookEntity>, isFromRemote: Boolean) {
         adapter.bookList = books
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        if (!isFromRemote) {
+            Toast.makeText(
+                requireContext(),
+                "data frm local",
+                Toast.LENGTH_LONG
+            ).show()
+        } else {
+
+            Toast.makeText(
+                requireContext(),
+                "data frm remote",
+                Toast.LENGTH_LONG
+            ).show()
+
+        }
 
     }
 
